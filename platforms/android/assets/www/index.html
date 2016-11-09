@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; img-src * data: 'unsafe-inline'; connect-src * 'unsafe-inline'; frame-src *;">
+
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <meta charset="utf-8">
+        
+        <!-- jQuery Mobile -->
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+        
+        <link rel="stylesheet" href="css/fontawesome/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="css/animate.css">
+
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/extrato.css">
+        <link rel="stylesheet" type="text/css" href="css/detalhe-conta.css">
+        <link rel="stylesheet" type="text/css" href="css/perfil-infos.css">
+
+        <title>Denarius</title>
+    </head>
+    <body>
+
+        <div data-role="popup" id="detalhes-gasto" class="ui-content esconder">
+            <fieldset class="ui-grid-a">
+                <div class="ui-block-a login-botoes">
+                    
+                    <button id="detalhes-gasto-editar" type="button" data-theme="c">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="ui-block-b login-botoes">
+                    <button id="detalhes-gasto-deletar" type="button" data-theme="b">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                </div> 
+            </fieldset>
+        </div>
+    
+        <div class="tela loading">
+            <img src="img/loader.gif" height="30px" alt="">
+        </div>
+        
+        <div class="tela splash">
+
+            <div class="titulo-1">Denarius App</div>
+            <small>Um produto desenvolvido pelo Projeto Denarius</small>
+        </div>
+
+        <div class="tela tela-spacing login">
+
+            <div class="login-escolha">
+                <div class="login-logotipo">
+                    <img src="img/logo.jpg" >
+                </div>
+                <div class="titulo-1">Novo por aqui?</div>
+                <div>
+                    <fieldset class="ui-grid-a">
+                        <div class="ui-block-a login-botoes"><button id="choice-btn-login" type="button" data-theme="c">Login</button></div>
+                        <div class="ui-block-b login-botoes"><button id="choice-btn-cadastro" type="button" data-theme="b">Cadastro</button></div>     
+                    </fieldset>
+                </div>
+            </div>
+            
+            <div class="login-entrar esconder">
+
+                <div class="titulo-1">Entrar</div>
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="text" id="login-field-email" placeholder="email@exemplo.com" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Senha</label>
+                    <input type="text" id="login-field-senha" placeholder="senha" class="form-control">
+                </div>
+                <div class="form-group">
+                    
+                    <fieldset class="ui-grid-a">
+                        <div class="ui-block-a login-botoes">
+                            <button onclick="log_out();" type="button" data-theme="c">Cancelar</button>
+                        </div>
+                        <div class="ui-block-b login-botoes">
+                            <button id="login-btn-entrar" data-theme="b">Entrar</button>
+                        </div> 
+                    </fieldset>
+
+                </div>
+
+            </div>
+            <div class="login-cadastrar esconder">
+
+                <div class="titulo-1">Cadastre-se</div>
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" id="cadastro-field-nome" placeholder="Seu nome" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="text" id="cadastro-field-email" placeholder="email@exemplo.com" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>Senha</label>
+                    <input type="text" id="cadastro-field-senha" placeholder="senha" class="form-control">
+                </div>
+
+                <div class="form-group">
+
+                    <fieldset class="ui-grid-a">
+                        <div class="ui-block-a login-botoes">
+                            <button onclick="log_out();" type="button" data-theme="c">Cancelar</button>
+                        </div>
+                        <div class="ui-block-b login-botoes">
+                            <button id="cadastro-btn-entrar" data-theme="b">Cadastrar</button>
+                        </div> 
+                    </fieldset>
+
+
+                    
+                </div>
+
+            </div>
+
+        </div>
+        
+        <!-- Início da Tela -->
+        <div class="tela extrato">
+
+            <div class="navbar">
+                <div class="navbar-menu" id="navbar-menu"><i class="fa fa-navicon"></i></div>
+                <div class="navbar-texto">Extrato</div>
+                <div class="navbar-menu-dir"></div>
+            </div>
+
+            <div class="menu-hover">
+                <div class="navbar-hover">
+                    <div class="navbar-menu-hover" id="navbar-menu-hover"><i class="fa fa-close"></i></div>
+                    <div class="navbar-texto">Menu</div>
+                    <div class="navbar-menu-dir"></div>
+                </div>
+
+                <div class="menu-hover-conteudo">
+                    <ul>
+                        <li onclick="change_screen_cadastrar_valor();">Lançar Valor</li>
+                        <li onclick="change_screen_barcode();">Lançar Valor com Código de Barras</li>
+                        <!--<li onclick="change_screen_cadastrar_valor();">Poupança</li>-->
+                        <li onclick="change_screen_perfil();">Meu Perfil</li>
+                        <li onclick="change_screen_mais_info();">Sobre o App</li>
+                        <li onclick="log_out();">Sair</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="data">
+                <div class="ui-grid-b">
+                    <div class="text-center ui-block-a meses mes1"></div>
+                    <div class="text-center ui-block-b meses mes2"></div>
+                    <div class="text-center ui-block-c meses mes3"></div>
+                </div><!-- /grid-b -->
+            </div>
+
+            <div class="resumo">
+                <div class="ui-grid-b">
+                    <div class="ui-block-a">
+                        <span class="extrato-resumo-valor" id="extrato-resumo"></span>
+                        <span class="extrato-resumo-descricao">resumo</span>
+                    </div>
+                    <div class="text-center ui-block-b">
+                        <span class="extrato-resumo-valor" id="extrato-receitas"></span>
+                        <span class="extrato-resumo-descricao">receitas</span>
+                    </div>
+                    <div class="text-right ui-block-c">
+                        <span class="extrato-resumo-valor" id="extrato-despesas"></span>
+                        <span class="extrato-resumo-descricao">despesas</span>
+                    </div>
+                </div><!-- /grid-b -->
+            </div>
+
+            <div id="extrato-lancamentos" class="extrato-lancamentos"></div>
+            
+        </div><!-- Fim da tela -->
+
+        <!-- Início da Tela -->
+        <div class="tela detalhe-conta">
+
+            <div class="navbar">
+                <div class="navbar-menu"><i class="fa fa-reply" aria-hidden="true"></i></div>
+                <div class="navbar-texto">Detalhes</div>
+                <div class="navbar-menu-dir"></div>
+            </div>
+
+            <div class="conteudo">
+                <div class="conteudo-texto-grande"><label>descrição</label>Auxílio de água</div>
+                <div class="conteudo-texto-grande"><label>valor</label>+ R$ 10,00</div>
+                <div class="conteudo-texto-grande"><label>recorrência</label>Mensal</div>
+                
+                <div class="conteudo-botoes">
+                    <fieldset class="ui-grid-a">
+                        <div class="ui-block-a"><button type="button" data-theme="c">Editar</button></div>
+                        <div class="ui-block-b"><button type="button" data-theme="b">Deletar</button></div>     
+                    </fieldset>
+                </div>
+
+            </div>
+
+            
+        </div><!-- Fim da tela -->
+
+        <!-- Início da Tela -->
+        <div class="tela cadastrar-valor">
+
+            <div class="navbar">
+                <div class="navbar-menu" id="cadastrar-valor-voltar"><i class="fa fa-reply" aria-hidden="true"></i></div>
+                <div class="navbar-texto">Lançar um Valor</div>
+                <div class="navbar-menu-dir"></div>
+            </div>
+
+            <div class="conteudo">
+
+
+
+                <div class="conteudo-texto-grande">
+                    <label>Descrição</label>
+                    <input id="cadastrar-descricao" type="text">
+                </div>
+
+                <div class="conteudo-texto-grande">
+                    <label>Valor</label>
+                    <input id="cadastrar-valor" type="text">
+                </div>
+        
+                <div class="conteudo-texto-grande">
+                    <label>Tipo</label>
+                    <select id="cadastrar-tipo">
+                        <option value="1">Geral</option>
+                    </select>
+                </div>
+
+                <div class="conteudo-texto-grande">
+                    <label>Carteira</label>
+                    <select id="cadastrar-carteira"></select>
+                    <input type="text" id="cadastrar-carteira-descricao">
+                </div>
+
+                <div class="conteudo-texto-grande">
+                    <label>Recorrência</label>
+                    <select id="cadastrar-recorrencia">
+                        <option value="1">Não recorrente</option>
+                        <option value="2">Diária</option>
+                        <option value="3">Semanal</option>
+                        <option value="4">Mensal</option>
+                    </select>
+                </div>
+
+                <div class="conteudo-texto-grande">
+                    <label>Data</label>
+                    <input id="cadastrar-data" value="getData();" type="date">
+                </div>
+
+                <div class="conteudo-botoes">
+                    <fieldset class="ui-grid-a">
+                        <div class="ui-block-a"><button id="cadastrar-btn-cancelar" type="button" data-theme="c">Cancelar</button></div>
+                        <div class="ui-block-b"><button id="cadastrar-btn-salvar" type="button" data-theme="b">Salvar</button></div>     
+                    </fieldset>
+                </div>
+
+            </div>
+
+            
+        </div><!-- Fim da tela -->
+
+        <!-- tela perfil -->
+        <div class="tela perfil">
+
+            <div class="navbar">
+                <div class="navbar-menu" id="navbar-perfil"><i class="fa fa-reply" aria-hidden="true"></i></div>
+                <div class="navbar-texto">Perfil</div>
+                <div class="navbar-menu-dir"></div>
+            </div>
+
+            <div class="perfil-infos">
+
+                <div class="titulo-1">Suas Informações</div>
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" id="perfil-field-nome" placeholder="Seu nome" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="text" id="perfil-field-email" placeholder="email@exemplo.com" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>Nova Senha</label>
+                    <input type="text" id="perfil-field-senha" placeholder="senha" class="form-control">
+                </div>
+
+                <div class="form-group">
+
+                    <fieldset class="ui-grid-a">
+                        <div class="ui-block-a login-botoes">
+                            <button onclick="change_screen_extrato();" type="button" data-theme="c">Cancelar</button>
+                        </div>
+                        <div class="ui-block-b login-botoes">
+                            <button id="perfil-btn-salvar" data-theme="b">Salvar</button>
+                        </div> 
+                    </fieldset>
+
+
+                    
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-default" id="perfil-deletar-conta">Deletar conta</button>
+                </div>
+
+            </div>
+
+        </div><!-- fim da tela -->
+
+        <!-- tela mais informacoes -->
+        <div class="tela mais-info">
+
+            <div class="navbar">
+                <div class="navbar-menu" id="navbar-mais-info"><i class="fa fa-reply" aria-hidden="true"></i></div>
+                <div class="navbar-texto">Sobre o App</div>
+                <div class="navbar-menu-dir"></div>
+            </div>
+
+            <div class="conteudo">
+
+                <p>Texto descritivo sobre o projeto Denarius</p>
+
+            </div>
+
+        </div><!-- fim da tela -->
+
+        
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="js/jquery_mobile/jquery.mobile-1.4.5.min.js"></script>
+        <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/database.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/extrato.js"></script>
+        <script type="text/javascript" src="js/barcode.js"></script>
+
+    </body>
+</html>

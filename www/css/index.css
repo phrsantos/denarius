@@ -1,0 +1,116 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+
+    font-size:18px;
+    height:100%;
+    margin:0;
+    padding:0;
+    width:100%;
+}
+
+
+
+.tela{
+
+
+    
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position:absolute;
+    top:0; 
+    right:0;
+    bottom:0; 
+    display:none;
+    left:0;
+    
+}
+.login{background-color: black; color:white; }
+.login-logotipo{padding-bottom:40px; text-align: center;}
+.login-botoes{padding:10px;}
+.tela-spacing{padding:20px;}
+.titulo-1{
+    font-size:1.2em;
+    margin-bottom:20px;
+    margin-top:10px;
+}
+.form-group label{font-size:0.8em; margin-top:20px; padding-bottom:0; margin-bottom:0; text-transform: uppercase; font-weight: bold;}
+
+
+.navbar{background-color:#FEA000; color:white; height:25px; padding:10px; padding-left:20px;}
+
+.navbar-menu{ width:20px; color:white; float:left;}
+.navbar-texto{ text-align: center; float:left; margin-left:40px; font-size: 17px;}
+.navbar-texto-basic{ text-align: center; float:left; }
+.navbar-texto-basic i{ font-size:0.8em; }
+.navbar-menu-dir{ width:20px; float:left;}
+.navbar i{font-weight: normal;}
+
+.text-center{text-align: center;}
+.text-right{text-align: right;}
+
+.menu-hover{position: absolute; z-index:999; background-color: black; width:70%; padding-bottom:12px; top:0; left:0; color:white; display:none;}
+.menu-hover ul{
+    list-style-type: none;
+    margin: 10px;
+    padding: 0;
+}
+.menu-hover ul li{
+    padding: 8px 0 8px 10px;
+    font-size:0.8em;
+}
+.menu-hover ul li:hover, li:active{
+    background-color:#333333;
+}
+
+
+.tela .conteudo{padding:20px;}
+
+.navbar-menu-hover{color:white; float:left; background-color:black; height:25px; }
+.navbar-hover{background-color:black; color:white; height:25px; padding:10px; padding-left:20px;}
+
+.splash{background:black; padding:40px; text-align: center; color:white;}
+
+.loading{height:100%; z-index:999999; width:100%; color:white; padding-top:150px; text-align: center; background-color:rgba(0,0, 0, 0.7); position:absolute;}
+
+.esconder{display:none;}
+.bounceInDown {
+  -webkit-animation: bounceInDown 0.3s; /* Safari 4+ */
+  -moz-animation:    bounceInDown 0.3s; /* Fx 5+ */
+  -o-animation:      bounceInDown 0.3s; /* Opera 12+ */
+  animation:         bounceInDown 0.3s; /* IE 10+, Fx 29+ */
+}
+
+.conteudo{padding:10px;}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+
+}
